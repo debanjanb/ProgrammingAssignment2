@@ -42,3 +42,25 @@ minv <- x$getinv() # getting the inverse matrix
         x$setinv(minv) # set the value to minv
         minv # return the value of minv
 }
+
+## Sample output
+## The following matrix and it's inverse is computed at http://www.purplemath.com/modules/mtrxinvr2.htm
+## So let us see if our program can achieve the same
+## > x = rbind(c(1,2,3), c(0,1,4), c(5,6,0))
+## > x
+##     [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    0    1    4
+## [3,]    5    6    0
+## > m = makeCacheMatrix(x)
+## > m$get()
+##     [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    0    1    4
+## [3,]    5    6    0
+## > cacheSolve(m)
+##     [,1] [,2] [,3]
+## [1,]  -24   18    5
+## [2,]   20  -15   -4
+## [3,]   -5    4    1
+## > 
