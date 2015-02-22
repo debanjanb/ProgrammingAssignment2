@@ -8,11 +8,11 @@
 ## 4. get the value of inverse of the matrix
 
 makeCacheMatrix <- function(x = matrix()) {
-        minv <- NULL 					# Intializing the value of the variable which will store the inverse 
+        minv <- NULL 						# Intializing the value of the variable which will store the inverse 
 # Using a set function to set the matrix to the object created by the makeCacheMatrix function        
 	set <- function(y) {
                 x <<- y
-                minv <<- NULL 				# Again initializing
+                minv <<- NULL 					# Again initializing
         }
 # Using a function get, to get the input matrix
         get <- function() x 
