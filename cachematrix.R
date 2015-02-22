@@ -8,16 +8,16 @@
 ## 4. get the value of inverse of the matrix
 
 makeCacheMatrix <- function(x = matrix()) {
-        minv <- NULL # Intializing the value of the variable which will store the inverse 
+        minv <- NULL 					# Intializing the value of the variable which will store the inverse 
 # Using a set function to set the matrix to the object created by the makeCacheMatrix function        
 	set <- function(y) {
                 x <<- y
-                minv <<- NULL # Again initializing
+                minv <<- NULL 				# Again initializing
         }
 # Using a function get, to get the input matrix
         get <- function() x 
-        setinv <- function(inv) minv <<- inv # setting the inverse matrix
-        getinv <- function() minv # returning the inverse matrix
+        setinv <- function(inv) minv <<- inv 			# setting the inverse matrix
+        getinv <- function() minv 				# returning the inverse matrix
 # creating a list of these functions
         list(set = set, get = get,
              setinv = setinv,
@@ -30,18 +30,25 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Step 2: If Step 1 has occured, i.e. inverse has been computed, it directly retrieves the result and skips the computing the inverse.
 ## Step 3: If Step 1 has not occured: inverse is not computed, it computes the inverse and sets the value in the cache.
 
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-minv <- x$getinv() # getting the inverse matrix
-        if(!is.null(minv)) {  # Checking if Step 1 is fulfilled or not.
-                message("Retrieving from the cached data") # if Step 1 is fulfilled
-                return(minv) # gets the cached data
-        } # if Step 1 is not fulfilled
-        data <- x$get() # getting the matrix in data
-        minv <- solve(data) # Using solve function, we invert the matrix
-        x$setinv(minv) # set the value to minv
-        minv # return the value of minv
+
+cacheSolve <- function(x, ...) {				# We assume here that the matrix is always invertible.
+
+## Return a matrix that is the inverse of 'x'
+
+minv <- x$getinv() 						# getting the inverse matrix
+        if(!is.null(minv)) {  					# Checking if Step 1 is fulfilled or not.
+# if Step 1 is fulfilled
+		message("Retrieving from the cached data") 
+                return(minv) 					# gets the cached data
+        } 
+# if Step 1 is not fulfilled
+        
+	data <- x$get() 					# getting the matrix in data
+        minv <- solve(data) 					# Using solve function, we invert the matrix
+        x$setinv(minv) 						# set the value to minv
+        minv 							# return the value of minv
 }
+
 
 ## Sample output
 ## The following matrix and it's inverse is computed at http://www.purplemath.com/modules/mtrxinvr2.htm
